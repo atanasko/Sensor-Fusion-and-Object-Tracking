@@ -42,9 +42,6 @@ def load_range_image(frame, lidar_name):
     return ri
 
 
-def key_callback(vis):
-    vis.destroy_window()
-
 
 vis = o3d.visualization.VisualizerWithKeyCallback()
 first_frame = True
@@ -57,6 +54,10 @@ def show_pcl(pcl):
 
     # step 1 : initialize open3d with key callback and create window
     global first_frame
+
+    def key_callback(vis):
+        vis.destroy_window()
+        
     if first_frame:
         vis.create_window()
         vis.register_key_callback(262, key_callback)
