@@ -72,7 +72,9 @@ def show_pcl(pcl):
         vis.add_geometry(pcd)
         first_frame = False
     else:
-        vis.update_geometry(pcd)
+        vis.clear_geometries()
+        vis.add_geometry(pcd)
+        # vis.update_geometry(pcd)
 
     # step 5 : visualize point cloud and keep window open until right-arrow is pressed (key-code 262)
     vis.poll_events()
