@@ -55,7 +55,7 @@ def show_pcl(pcl):
     vis = o3d.visualization.Visualizer()
     if not hasattr(show_pcl, "cnt_frame"):
         show_pcl.cnt_frame = 0
-        vis.register_key_callback(262, key_callback)
+        # vis.register_key_callback(262, key_callback)
         vis.create_window(width=640, height=480)
 
     # step 2 : create instance of open3d point-cloud class
