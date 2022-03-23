@@ -211,18 +211,18 @@ def detect_objects(input_bev_maps, model, configs):
             # detections = post_processing(detections, configs)
             # detections = detections[0]  # only first batch
 
-            output_post = post_processing(outputs, configs)
-            detections = []
-            for sample_i in range(len(output_post)):
-                if output_post[sample_i] is None:
-                    continue
-                detection = output_post[sample_i]
-                for obj in detection:
-                    x, y, w, l, im, re, _, _, _ = obj
-                    yaw = np.arctan2(im, re)
-                    detections.append([1, x, y, 0.0, 1.50, w, l, yaw])
+            outputs = model(input_bev_maps)
+            outputs['hm_cen'] = _sigmoid(outputs['hm_cen'])
+            outputs['cen_offset'] = _sigmoid(outputs['cen_offset'])
+            # detections size (batch_size, K, 10)
+            detections = decode(outputs['hm_cen'], outputs['cen_offset'], outputs['direction'], outputs['z_coor'],
+                                outputs['dim'], K=configs.K)
+            detections = detections.cpu().numpy().astype(np.float32)
+            # detections = post_processing(detections, configs.num_classes, configs.down_ratio, configs.peak_thresh)
+            detections = post_processing(detections, configs)
+            detections = detections[0][1]
 
-                    #######
+            #######
             ####### ID_S3_EX1-5 END #######     
 
             

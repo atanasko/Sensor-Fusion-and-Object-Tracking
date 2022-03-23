@@ -57,7 +57,7 @@ show_only_frames = [50, 51] # show only frames in interval for debugging
 
 ## Prepare Waymo Open Dataset file for loading
 data_fullpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'dataset', data_filename) # adjustable path in case this script is called from another working directory
-results_fullpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tools/objdet_models/darknet/results/results_sequence_1_darknet')
+results_fullpath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'tools/objdet_models/resnet/results/results_sequence_1_resnet')
 datafile = WaymoDataFileReader(data_fullpath)
 datafile_iter = iter(datafile)  # initialize dataset iterator
 
