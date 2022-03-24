@@ -14,6 +14,7 @@
 import numpy as np
 import torch
 from easydict import EasyDict as edict
+import cv2
 
 # add project directory to python path to enable relative imports
 import os
@@ -224,25 +225,25 @@ def detect_objects(input_bev_maps, model, configs):
     objects = [] 
 
     ## step 1 : check whether there are any detections
-    # if np.size(detections) > 0:
-    if len(detections) > 0:
+    for obj in detections:
+        _id, _x, _y, _z, _h, _w, _l, _yaw = obj
 
         ## step 2 : loop over all detections
-        for obj in detections:
-        
-            ## step 3 : perform the conversion using the limits for x, y and z set in the configs structure
-            _id, _x, _y, _z, _h, _w, _l, _yaw = obj
+        x = _y / configs.bev_height * (configs.lim_x[1] - configs.lim_x[0])
+        y = _x / configs.bev_width * (configs.lim_y[1] - configs.lim_y[0]) - (configs.lim_y[1] - configs.lim_y[0]) / 2.0
+        w = _w / configs.bev_width * (configs.lim_y[1] - configs.lim_y[0])
+        l = _l / configs.bev_height * (configs.lim_x[1] - configs.lim_x[0])
+        z = _z - configs.lim_z[0]
+        yaw = -_yaw
 
-            x = (_y - configs.lim_y[0]) / (configs.lim_y[1] - configs.lim_y[0]) * configs.bev_width
-            y = (_x - configs.lim_x[0]) / (configs.lim_x[1] - configs.lim_x[0]) * configs.bev_height
-            z = _z - configs.lim_z[0]
-            w = _w / (configs.lim_y[1] - configs.lim_y[0]) * configs.bev_width
-            l = _l / (configs.lim_x[1] - configs.lim_x[0]) * configs.bev_height
-            yaw = -_yaw
-        
+            ## step 3 : perform the conversion using the limits for x, y and z set in the configs structure
+        if ((x >= configs.lim_x[0]) and (x <= configs.lim_x[1])
+                and (y >= configs.lim_y[0]) and (y <= configs.lim_y[1])
+                and (z >= configs.lim_z[0]) and (z <= configs.lim_z[1])):
+
             ## step 4 : append the current object to the 'objects' array
             objects.append([1, x, y, 0.0, 1.50, w, l, yaw])
-        
+
     #######
     ####### ID_S3_EX2 START #######   
     
