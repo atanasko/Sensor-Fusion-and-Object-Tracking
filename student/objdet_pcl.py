@@ -144,9 +144,9 @@ def bev_from_pcl(lidar_pcl, configs):
 
     # step 3 : perform the same operation as in step 2 for the y-coordinates but make sure that no negative bev-coordinates occur
     lidar_pcl_cpy[:, 1] = np.int_(np.floor(lidar_pcl_cpy[:, 1] / bev_discret) + (configs.bev_width + 1) / 2)
+    lidar_pcl_cpy[:, 2] = lidar_pcl_cpy[:, 2] - configs.lim_z[0]
 
     # step 4 : visualize point-cloud using the function show_pcl from a previous task
-
     # show_pcl(lidar_pcl_cpy)
     # input("Press Enter to continue...")
 
@@ -163,14 +163,14 @@ def bev_from_pcl(lidar_pcl, configs):
     intensity_map = np.zeros((configs.bev_height + 1, configs.bev_width + 1))
 
     # step 2 : re-arrange elements in lidar_pcl_cpy by sorting first by x, then y, then -z (use numpy.lexsort)
-    idx_height = np.lexsort((-lidar_pcl_cpy[:, 2], lidar_pcl_cpy[:, 1], lidar_pcl_cpy[:, 0]))
-    lidar_top_pcl = lidar_pcl_cpy[idx_height]
+    lidar_pcl_cpy[lidar_pcl_cpy[:, 3] > 1.0, 3] = 1.0
+    idx_intensity = np.lexsort((-lidar_pcl_cpy[:, 3], lidar_pcl_cpy[:, 1], lidar_pcl_cpy[:, 0]))
+    lidar_pcl_cpy = lidar_pcl_cpy[idx_intensity]
 
     ## step 3 : extract all points with identical x and y such that only the top-most z-coordinate is kept (use numpy.unique)
     ##          also, store the number of points per x,y-cell in a variable named "counts" for use in the next task
-    _, idx_height_unique = np.unique(lidar_top_pcl[:, 0:2], axis=0, return_index=True)
-    lidar_top_pcl = lidar_top_pcl[idx_height_unique]
-    _, _, counts = np.unique(lidar_pcl_cpy[:, 0:2], axis=0, return_index=True, return_counts=True)
+    _, indices = np.unique(lidar_pcl_cpy[:, 0:2], axis=0, return_index=True)
+    lidar_top_pcl = lidar_pcl_cpy[indices]
 
     ## step 4 : assign the intensity value of each unique entry in lidar_top_pcl to the intensity map 
     ##          make sure that the intensity is scaled in such a way that objects of interest (e.g. vehicles) are clearly visible    
