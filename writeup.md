@@ -8,23 +8,23 @@ In the following images fragments of point cloud image and range image are prese
 
 ![Alt text](results/sc1.png "result 1")
 
-![Alt text](results/sc1.png "result 2")
+![Alt text](results/sc2.png "result 2")
 
-![Alt text](results/sc1.png "result 3")
+![Alt text](results/sc3.png "result 3")
 
-![Alt text](results/sc1.png "result 4")
+![Alt text](results/sc4.png "result 4")
 
-![Alt text](results/sc1.png "result 5")
+![Alt text](results/sc5.png "result 5")
 
-![Alt text](results/sc1.png "result 6")
+![Alt text](results/sc6.png "result 6")
 
-![Alt text](results/sc1.png "result 7")
+![Alt text](results/sc7.png "result 7")
 
-![Alt text](results/sc1.png "result 8")
+![Alt text](results/sc8.png "result 8")
 
-![Alt text](results/sc1.png "result 9")
+![Alt text](results/sc9.png "result 9")
 
-![Alt text](results/sc1.png "result 10")
+![Alt text](results/sc10.png "result 10")
 
 ### Performance metrics results
 
