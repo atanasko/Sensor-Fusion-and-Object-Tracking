@@ -1,15 +1,31 @@
 # Writeup: Track 3D-Objects Over Time
 
-Please use this starter template to answer the following questions:
+3D Object Detection mid-term project suppose to demonstrate capabilities to extract lidar range image from Waymo Open Dataset input TensorFlow file, display point cloud image, convert to BEV image and by using  pre-trained Complex YOLO Convolutional Neural Network detect objects and at the end asses detection results.
 
-### 1. Write a short recap of the four tracking steps and what you implemented there (filter, track management, association, camera fusion). Which results did you achieve? Which part of the project was most difficult for you to complete, and why?
+### Vehicles with varying degrees of visibility in the point-cloud
 
+In the following images fragments of point cloud image and range image are presented next to each other so vehicles visible in the point cloud images can be also vied in the range image.
 
-### 2. Do you see any benefits in camera-lidar fusion compared to lidar-only tracking (in theory and in your concrete results)? 
+![Alt text](results/sc1.png "result 1")
 
+![Alt text](results/sc1.png "result 2")
 
-### 3. Which challenges will a sensor fusion system face in real-life scenarios? Did you see any of these challenges in the project?
+![Alt text](results/sc1.png "result 3")
 
+![Alt text](results/sc1.png "result 4")
 
-### 4. Can you think of ways to improve your tracking results in the future?
+![Alt text](results/sc1.png "result 5")
 
+![Alt text](results/sc1.png "result 6")
+
+![Alt text](results/sc1.png "result 7")
+
+![Alt text](results/sc1.png "result 8")
+
+![Alt text](results/sc1.png "result 9")
+
+![Alt text](results/sc1.png "result 10")
+
+### Performance metrics results
+
+![Alt text](results/performance.png "performance")
