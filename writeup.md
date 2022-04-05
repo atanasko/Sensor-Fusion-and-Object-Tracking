@@ -6,25 +6,25 @@
 
 In the following images fragments of point cloud image and range image are presented next to each other so vehicles visible in the point cloud images can be also vied in the range image.
 
-![Alt text](results/sc1.png "result 1")
+![Alt text](outcome/sc1.png "outcome 1")
 
-![Alt text](results/sc2.png "result 2")
+![Alt text](outcome/sc2.png "outcome 2")
 
-![Alt text](results/sc3.png "result 3")
+![Alt text](outcome/sc3.png "outcome 3")
 
-![Alt text](results/sc4.png "result 4")
+![Alt text](outcome/sc4.png "outcome 4")
 
-![Alt text](results/sc5.png "result 5")
+![Alt text](outcome/sc5.png "outcome 5")
 
-![Alt text](results/sc6.png "result 6")
+![Alt text](outcome/sc6.png "outcome 6")
 
-![Alt text](results/sc7.png "result 7")
+![Alt text](outcome/sc7.png "outcome 7")
 
-![Alt text](results/sc8.png "result 8")
+![Alt text](outcome/sc8.png "outcome 8")
 
-![Alt text](results/sc9.png "result 9")
+![Alt text](outcome/sc9.png "outcome 9")
 
-![Alt text](results/sc10.png "result 10")
+![Alt text](outcome/sc10.png "outcome 10")
 
 ### Performance metrics results
 
