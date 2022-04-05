@@ -28,4 +28,4 @@ In the following images fragments of point cloud image and range image are prese
 
 ### Performance metrics results
 
-![Alt text](results/performance.png "performance")
+![Alt text](outcome/performance.png "performance")
