@@ -105,6 +105,7 @@ class Trackmanagement:
         self.last_id = -1
         self.result_list = []
         self.score_step = 1. / params.window
+        self.initialized_threshold = 1. / params.window
         
     def manage_tracks(self, unassigned_tracks, unassigned_meas, meas_list):  
         ############
@@ -160,7 +161,7 @@ class Trackmanagement:
         ############
         if track.score < 1:
             track.score += self.score_step
-        if self.score_step < track.score < params.confirmed_threshold:
+        if self.initialized_threshold < track.score < params.confirmed_threshold:
             track.state = 'tentative'
         if track.score >= params.confirmed_threshold:
             track.state = 'confirmed'
