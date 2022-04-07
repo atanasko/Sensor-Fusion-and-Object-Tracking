@@ -24,10 +24,7 @@ import misc.params as params
 class Filter:
     '''Kalman filter class'''
     def __init__(self):
-        self.dim_state = 6  # process model dimension
-        self.H = np.matrix([[1, 0, 0, 0, 0, 0],
-                            [0, 1, 0, 0, 0, 0],
-                            [0, 0, 1, 0, 0, 0]])
+        pass
 
     def F(self):
         ############
@@ -88,14 +85,14 @@ class Filter:
         # TODO Step 1: update state x and covariance P with associated measurement, save x and P in track
         ############
         # update state and covariance with associated measurement
-        H = self.H  # measurement matrix
+        Hj = meas.sensor.get_H(track.x)  # measurement matrix
 
         gamma = self.gamma(track, meas)  # residual
-        S = self.S(track, meas, H)# covariance of residual
-        K = track.P * H.transpose() * np.linalg.inv(S)  # Kalman gain
+        S = self.S(track, meas, Hj)# covariance of residual
+        K = track.P * Hj.transpose() * np.linalg.inv(S)  # Kalman gain
         x = track.x + K * gamma  # state update
-        I = np.identity(self.dim_state)
-        P = (I - K * H) * track.P  # covariance update
+        I = np.identity(params.dim_state)
+        P = (I - K * Hj) * track.P  # covariance update
 
         track.set_x(x)
         track.set_P(P)
@@ -109,10 +106,8 @@ class Filter:
         ############
         # TODO Step 1: calculate and return residual gamma
         ############
-        H = self.H  # measurement matrix
 
-        # return meas.z - Sensor.get_hx(track.x)
-        return meas.z - H * track.x
+        return meas.z - meas.sensor.get_hx(track.x)
 
         ############
         # END student code
