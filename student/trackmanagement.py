@@ -120,7 +120,7 @@ class Trackmanagement:
             track = self.track_list[i]
             # check visibility    
             if meas_list: # if not empty
-                if meas_list[0].sensor.in_fov(track.x):
+                if not meas_list[0].sensor.in_fov(track.x):
                     # your code goes here
                     track.score -= self.score_step
 
