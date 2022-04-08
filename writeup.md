@@ -21,7 +21,7 @@ In the last forth step nonlinear camera measurement model is implemented. Finall
 
 At last video is build that present sensor fusion module in action
 
-![Alt text](outcome/sensor_fusion_output.avi "Sensor fusion output avi")
+![Alt text](outcome/sensor_fusion_output.mp4 "Sensor fusion output avi")
 
 ### 2. Benefits in camera-lidar fusion compared to lidar-only tracking (in theory and in concrete results)? 
 
